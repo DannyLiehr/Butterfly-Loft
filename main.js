@@ -315,7 +315,7 @@ window.onload = function() {
     toggleBuy();
     displayMsg();
     (function loop() {
-        var rand = Math.round(Math.random() * ((SECONDS * 15) - (SECONDS * 5)));
+        var rand = Math.round(Math.random() * ((MINUTES * 2) - (SECONDS * 35)));
         setTimeout(function() {
                 //alert('A');
                 butterflySpawner();
