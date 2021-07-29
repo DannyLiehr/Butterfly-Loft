@@ -24,12 +24,12 @@ var flowers=[
     {
     id: 3,
     name: "Baby's Breath",
-    desc: "This plant has many tiny white flowers. They mostly seen in the summer, though.",
+    desc: "This plant has many tiny white flowers. They are mostly seen in the summer, though.",
     quant: 0,
     image: "babybreath",
     price: 500,
-    prize: 10,
-    boost: 2
+    prize: 3,
+    boost: 1.2
     },
     {
     id: 4,
@@ -38,8 +38,8 @@ var flowers=[
     quant: 0,
     image: "tulip",
     price: 1000,
-    prize: 15,
-    boost: 2
+    prize: 5,
+    boost: 1.3
     },
     {
     id: 5,
@@ -48,7 +48,7 @@ var flowers=[
     quant: 0,
     image: "grape",
     price: 5000,
-    prize: 20,
-    boost: 2.5
+    prize: 6,
+    boost: 1.4
     },
 ]
