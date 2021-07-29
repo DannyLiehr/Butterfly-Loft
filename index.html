@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+    <head>
+        <meta name="Butterfly Loft">
+        <title>Butterfly Loft</title>
+          <link rel="stylesheet" href="./styles.css">
+          <link rel="shortcut icon" type="image/jpg" href="./img/butterfly_icon.png"/>
+    </head>
+    <body>
+        <h1 id="logo" class="cursive">Butterfly Loft</h1>
+        <div id="currencybox">
+            <button id="restart">Reset Game</button>
+            <button id="shopbtn" onclick="toggleShop()">Shop <img src="./img/coin.png" class="sprite"></button>
+            <button id="butterflybttn" onclick="toggleBF()">Butterflies <img src="./img/butterfly_icon.png" class="sprite"></button><br/>
+            <h3><span id="count" onchange="buildShop()">0</span> dewdrops</h3>
+            <div style="display: flex; justify-content: space-between;"><span><span id="boost">0</span>x boost</span><span><span id="dps">0</span> drops per second</span><span><span id="tbs">0</span>/10 pots used</span></div>
+        </div>
+        <table id="shoppe" style="display: none;">
+            <thead>
+
+              <tr>
+                <th>Item</th>
+                <th>Description</th>
+                <th>Dewdrops</th>
+                <th><a id="closeShop" style="display:none" onclick="toggleShop()">✖</a><button id="buysell" onclick="toggleBuy()">Sell Mode</button></th>
+              </tr>
+          </thead>
+          <tbody id="items">
+              <!-- <tr><td>items</td></tr> -->
+          </tbody>
+        </table>
+
+        <table id="butterfly" style="display: none;">
+            <thead>
+
+              <tr>
+                <th>Name</th>
+                <th>Desc</th>
+                <th><a id="closeButterfly" style="display:none" onclick="toggleBF()">✖</a></th>
+              </tr>
+          </thead>
+          <tbody id="log">
+              <!-- <tr><td>items</td></tr> -->
+          </tbody>
+        </table>
+        <div id="wrapper" class="centeredcontent">
+            <table id="inv" class="centeredcontent">
+            <thead>
+              <tr>
+                <th>Flowers</th>
+              </tr>
+          </thead>
+          <tbody id="invlist">
+              <!-- <tr><td>items</td></tr> -->
+          </tbody>
+        </table>
+            <div id="bflog" class="centeredcontent">
+              </div>
+    </div>
+    <footer>
+        <!-- <a id="showBugs" onclick="showBugs()">Known bugs</a>
+        <div id="knownBugs" style="display:hidden;">
+            <ul>
+                <li>Butterflies won't always save to the log.</li>
+            </ul>
+        </div> -->
+    </footer>
+
+        <!-- Scripts -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="./num-func.js"></script>
+        <script type="text/javascript" src="./tuning.js"></script>
+        <script type="text/javascript" src="./flowers.js"></script>
+        <script type="text/javascript" src="./butterflies.js"></script>
+        <script type="text/javascript" src="./make-data.js"></script>
+        <script type="text/javascript" src="./main.js"></script>
+    </body>
+</html>
