@@ -7,11 +7,11 @@ let visitors=[];
 let tbs;
 let purchaseMode;
 let butterflyMsg;
+let maxS;
 
 var now= new Date();
 var nowNow= Date.now();
 
-let datatypes=[{name: "tablespace", var: tbs, val: 0}, {name: "purchaseMode", var: purchaseMode, val: 'purchase'}, {name: "drops", var: x, val: 10}, {name: "dps", var: dps, val: 0}, {name: "boost", var: boost, val: 1}, {name: "lastOn", var: lastLogin, val: now},{name: "butterflyMsg", var: butterflyMsg, val: 'Welcome to your sunroom. Buy a dandelion, get dewdrops, and use those dewdrops to get more flowers to attract more butterflies!|'}];
 
 // Make this a looping function eventually.
 function buildData(){
@@ -48,6 +48,16 @@ function buildData(){
             tbs= 0;
         }
         localStorage.setItem("tablespace", tbs);
+
+    if (localStorage.getItem("maxSpace")){
+            // console.log("Has inventory");
+            maxS = (localStorage.getItem("maxSpace"));
+        } else{
+            // console.log("No inventory")
+            maxS= 10;
+        }
+        localStorage.setItem("maxSpace", maxS);
+
         if (localStorage.getItem("butterflyMsg")){
                 // console.log("Has inventory");
                 butterflyMsg = (localStorage.getItem("butterflyMsg"));
