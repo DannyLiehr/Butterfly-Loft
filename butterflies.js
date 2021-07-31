@@ -8,7 +8,7 @@ var butterflies =[
     special: false,
     quant: 0,
     image: "cabbage",
-    spawnswith: [1,2,3,4,5],
+    spawnswith: [1,2,3,4,5,6,7],
     flavour: `Hey, cutie!`
     },
     {id: 2,
@@ -41,7 +41,7 @@ var butterflies =[
     special: false,
     quant: 0,
     image: "sweatbee",
-    spawnswith: [1,2,3,4,5],
+    spawnswith: [1,2,3,4,5,6,7],
     flavour: `Phooey.`
     },
     {id: 5,
@@ -52,7 +52,7 @@ var butterflies =[
     special: false,
     quant: 0,
     image: "wasp",
-    spawnswith: [1,2,3,4,5],
+    spawnswith: [1,2,3,4,5,6,7],
     flavour: `Eeek!!`
     },
     {id: 5,
