@@ -13,7 +13,7 @@
             <button id="shopbtn" onclick="toggleShop()">Shop <img src="./img/coin.png" class="sprite"></button>
             <button id="butterflybttn" onclick="toggleBF()">Butterflies <img src="./img/butterfly_icon.png" class="sprite"></button><br/>
             <h3><span id="count" onchange="buildShop()">0</span> dewdrops</h3>
-            <div style="display: flex; justify-content: space-between;"><span><span id="boost">0</span>x boost</span><span><span id="dps">0</span> drops per second</span><span><span id="tbs">0</span>/10 pots used</span></div>
+            <div style="display: flex; justify-content: space-between;"><span><span id="boost">0</span>x boost</span><span><span id="dps">0</span> drops per second</span><span><span id="tbs">0</span>/<span id="maxSpace">0</span> pots used</span></div>
         </div>
         <table id="shoppe" style="display: none;">
             <thead>
@@ -58,12 +58,7 @@
               </div>
     </div>
     <footer>
-        <!-- <a id="showBugs" onclick="showBugs()">Known bugs</a>
-        <div id="knownBugs" style="display:hidden;">
-            <ul>
-                <li>Butterflies won't always save to the log.</li>
-            </ul>
-        </div> -->
+        <button id="tbsbttn" onclick="buySpace()">Buy more table space<br/>10 spaces- 100k</button>
     </footer>
 
         <!-- Scripts -->

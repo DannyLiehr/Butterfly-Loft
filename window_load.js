@@ -24,7 +24,9 @@ window.onload = function() {
         }, rand);
     }());
     flowerCheck();
-    document.getElementById("count").innerHTML = x.toLocaleString();
-    document.getElementById("tbs").innerHTML = tbs;
-
+    document.title = `Butterfly Loft (${Math.floor(parseFloat(localStorage.getItem("drops")))} dewdrops)`;
+    document.getElementById("count").innerHTML = Math.floor((localStorage.getItem("drops"))).toLocaleString();
+    document.getElementById("boost").innerHTML = parseInt(boost).toFixed(2);
+    document.getElementById("dps").innerHTML = parseInt(dps).toFixed(2);
+    document.getElementById("maxSpace").innerHTML = maxS;
 };

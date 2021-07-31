@@ -23,6 +23,8 @@ function initGame(){
     buildData();
     document.getElementById("boost").innerHTML = boost;
     document.getElementById("dps").innerHTML = dps;
+    document.getElementById("maxSpace").innerHTML = maxS;
+    document.getElementById("tbs").innerHTML = tbs;
     // console.log(flowerPots);
 }
 
@@ -32,10 +34,12 @@ document.getElementById('restart').addEventListener("click", function(){
     clearTable("inv");
     initGame();
     displayInv();
+    buildShop();
     document.getElementById("count").innerHTML = Math.floor((localStorage.getItem("drops"))).toLocaleString();
-    document.getElementById("boost").innerHTML = boost.toFixed(2);
-    document.getElementById("dps").innerHTML = dps.toFixed(2);
+    document.getElementById("boost").innerHTML = parseInt(boost).toFixed(2);
+    document.getElementById("dps").innerHTML = parseInt(dps).toFixed(2);
     document.getElementById("tbs").innerHTML = tbs;
+    document.getElementById("maxSpace").innerHTML = (localStorage.getItem("maxSpace"));
     displayMsg();
 });
 
@@ -86,6 +90,9 @@ function iterate(data, num){
         case "tablespace":
             document.getElementById("tbs").innerHTML = (localStorage.getItem("tablespace"));
         break;
+        case "maxSpace":
+            document.getElementById("maxSpace").innerHTML = (localStorage.getItem("maxSpace"));
+        break;
     }
     return num;
 }
@@ -135,7 +142,7 @@ function clearTable(name){
 function buildShop(){
     clearTable('shoppe');
     // Iterate through built in flowers
-
+    let currSpace= parseInt(localStorage.getItem("maxSpace"));
     for (item in shopArr){
         let flw= shopArr[item];
         let stock= shop.getElementsByTagName('tbody')[0] || document.createElement('tbody');
@@ -162,7 +169,7 @@ function buildShop(){
                 document.getElementById(flw.id).disabled = false;
             }
         } else if (purchaseMode== "purchase"){
-            if ((localStorage.getItem("drops")) < flw.price || localStorage.getItem("tablespace") == 10){
+            if ((localStorage.getItem("drops")) < flw.price || localStorage.getItem("tablespace") == currSpace){
                 document.getElementById(flw.id).disabled = true;
 
             } else {
@@ -172,10 +179,14 @@ function buildShop(){
 
     }
     // ^ End Loop.
-    if(localStorage.getItem("tablespace")== 10){
-        let row2 = shop.insertRow(0);
+
+    if(localStorage.getItem("tablespace") >= currSpace){
+        let row2 = shop.insertRow(-1);
         let cell1 = row2.insertCell(0);
-        cell1.innerHTML=`<td colspan="4">You are out of space on your table! Sell some flowers. (Coming soon)</td>`;
+        cell1.innerHTML=`<td colspan="2">You are out of space on your table! Sell some flowers. (Coming soon)</td>`;
+        if (purchaseMode== "purchase"){
+            toggleBuy();
+        }
     }
 }
 
@@ -314,4 +325,17 @@ function butterflySpawner(){
         }
     }
     // if ((chosenBF.spawnswith).includes)
+}
+
+
+function buySpace(){
+    // If they have 100k
+    let currBal= parseInt(localStorage.getItem("drops"));
+    if (currBal >= 100000){
+        iterate("maxSpace", 10);
+        iterate("drops", -100000);
+    } else {
+        localStorage.setItem("butterflyMsg", `You don't have 100,000 dew drops! Collect ${(100000 - currBal).toLocaleString()} more dewdrops.`);
+        displayMsg();
+    }
 }
