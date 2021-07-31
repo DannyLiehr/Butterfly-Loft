@@ -32,9 +32,9 @@ document.getElementById('restart').addEventListener("click", function(){
     clearTable("inv");
     initGame();
     displayInv();
-    document.getElementById("count").innerHTML = Math.floor((localStorage.getItem("drops")));
-    document.getElementById("boost").innerHTML = boost;
-    document.getElementById("dps").innerHTML = dps;
+    document.getElementById("count").innerHTML = Math.floor((localStorage.getItem("drops"))).toLocaleString();
+    document.getElementById("boost").innerHTML = boost.toFixed(2);
+    document.getElementById("dps").innerHTML = dps.toFixed(2);
     document.getElementById("tbs").innerHTML = tbs;
     displayMsg();
 });
@@ -148,7 +148,7 @@ function buildShop(){
         let cell5 = row.insertCell(4);
         cell1.innerHTML=`<img src="./img/${flw.image}.png" height="32px" style="vertical-align: middle;">${flw.name}`;
         cell2.innerHTML=`${flw.desc}`;
-        cell3.innerHTML=`${flw.price}`;
+        cell3.innerHTML=`${(flw.price).toLocaleString()}`;
 
         cell4.innerHTML=`<button name="${flw.name}" id="${flw.id}" onclick="${purchaseMode}Pot(this)">x1</button>`;
 
@@ -227,7 +227,7 @@ function displayInv(){
                 let row = inv.insertRow(-1);
                 let cell1 = row.insertCell(0);
                 for (let j = 0; j < parseInt(localStorage.getItem(flowers[i].name)); j++){
-                    cell1.innerHTML += `<img src="./img/${flowers[i].image}.png" style="position: relative; top:${getRandomInt(-10,10)}" class="sprite">`
+                    cell1.innerHTML += `<img src="./img/${flowers[i].image}.png" style="position: relative; top:${getRandomInt(-10,10)}" class="sprite-med">`
                 }
             }
         }
@@ -238,11 +238,21 @@ function displayMsg(){
     document.getElementById("bflog").innerHTML = "";
     let msgArr= (localStorage.getItem("butterflyMsg")).split("|");
     for (i in msgArr){
-        document.getElementById("bflog").innerHTML += `<p>${msgArr[i]}</p>`;
+        document.getElementById("bflog").innerHTML += `<p class="ephemeral">${msgArr[i]}</p>`;
+        setTimeout(function() {
+            $('.ephemeral').fadeOut('slow');
+            localStorage.setItem("butterflyMsg", "")
+        }, SECONDS *12);
     }
 }
 
 function buildBF(){
+    var shop = document.getElementById("shoppe");
+    var closeS = document.getElementById("closeShop");
+    if (shop.style.display === "block"){
+        shop.style.display = "none";
+        closeS.style.display = "none";
+    }
     clearTable('butterfly');
     let stock= buttF.getElementsByTagName('tbody')[0] || document.createElement('tbody');
     // Proceed with populating fields.
@@ -296,7 +306,7 @@ function butterflySpawner(){
                     let butterFQuant= parseInt(localStorage.getItem(chosenBF.name));
                     localStorage.setItem(chosenBF.name, butterFQuant+=1);
                     iterate("drops", chosenBF.prize);
-                    localStorage.setItem("butterflyMsg", `${localStorage.getItem("butterflyMsg")}|<img src="./img/${chosenBF.image}.png" class="sprite"> <strong>${chosenBF.flavour}</strong> A ${chosenBF.name} visited your garden! ${randomise(['He', 'She', 'They', 'It', 'Xe'])} left you a gift of ${chosenBF.prize} dewdrops!`);
+                    localStorage.setItem("butterflyMsg", `<img src="./img/${chosenBF.image}.png" class="element-animation sprite"> <strong>${chosenBF.flavour}</strong> A ${chosenBF.name} visited your garden! ${randomise(['He', 'She', 'They', 'It', 'Xe'])} left you a gift of ${chosenBF.prize} dewdrops!`);
                     buildBF();
                     displayMsg();
                 }
@@ -305,25 +315,3 @@ function butterflySpawner(){
     }
     // if ((chosenBF.spawnswith).includes)
 }
-
-window.onload = function() {
-    // Just in case...
-    clearTable('shoppe');
-    initGame();
-    displayInv();
-    growDrops();
-    toggleBuy();
-    displayMsg();
-    (function loop() {
-        var rand = Math.round(Math.random() * ((MINUTES * 2) - (SECONDS * 35)));
-        setTimeout(function() {
-                //alert('A');
-                butterflySpawner();
-                loop();
-        }, rand);
-    }());
-    butterflySpawner();
-    document.getElementById("count").innerHTML = x.toLocaleString();
-    document.getElementById("tbs").innerHTML = tbs;
-
-};

@@ -52,8 +52,15 @@ function buildData(){
                 // console.log("Has inventory");
                 butterflyMsg = (localStorage.getItem("butterflyMsg"));
             } else{
-                // console.log("No inventory")
-                butterflyMsg= 'Welcome to your sunroom. Buy a dandelion, get dewdrops, and use those dewdrops to get more flowers to attract more butterflies!|';
+                butterflyMsg= 'Welcome back to your sunroom.';
+                for (i in flowers){
+                    if (localStorage.getItem(flowers[i]) > 0){
+                        // They already bought a flower.
+                        continue;
+                    } else {
+                        butterflyMsg= 'Welcome to your sunroom. Buy a dandelion, get dewdrops, and use those dewdrops to get more flowers to attract more butterflies!';
+                    }
+                }
             }
             localStorage.setItem("butterflyMsg", butterflyMsg);
 
