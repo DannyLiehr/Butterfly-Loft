@@ -12,8 +12,8 @@ var butterflies =[
     flavour: `Hey, cutie!`
     },
     {id: 2,
-    name: "Firey Skipper",
-    desc: "Firey Skippers fly fast and are very fuzzy.",
+    name: "Fiery Skipper",
+    desc: "Fiery Skippers fly fast and are very fuzzy.",
     rarity: .5,
     prize: 10,
     special: false,
@@ -30,7 +30,7 @@ var butterflies =[
     special: false,
     quant: 0,
     image: "honeybee",
-    spawnswith: [1,2,3,4,5],
+    spawnswith: [4,5,6,7],
     flavour: `Oh my!`
     },
     {id: 4,
@@ -54,5 +54,16 @@ var butterflies =[
     image: "wasp",
     spawnswith: [1,2,3,4,5],
     flavour: `Eeek!!`
+    },
+    {id: 5,
+    name: "Tiger Swallowtail",
+    desc: "A beautiful butterfly with stripes and splashes of blue.",
+    rarity: .15,
+    prize: 45,
+    special: false,
+    quant: 0,
+    image: "tiger",
+    spawnswith: [6,7],
+    flavour: `Oh, pretty!`
     },
 ]
